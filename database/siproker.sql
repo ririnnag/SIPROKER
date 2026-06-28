@@ -21,11 +21,11 @@ SET FOREIGN_KEY_CHECKS = 1;
 -- ============================================================
 -- Create Database
 -- ============================================================
-CREATE DATABASE IF NOT EXISTS `siproker` 
-  CHARACTER SET utf8mb4 
-  COLLATE utf8mb4_unicode_ci;
+-- CREATE DATABASE IF NOT EXISTS `siproker` 
+--   CHARACTER SET utf8mb4 
+--   COLLATE utf8mb4_unicode_ci;
 
-USE `siproker`;
+-- USE `siproker`;
 
 -- ============================================================
 -- Table: roles
@@ -142,11 +142,12 @@ INSERT INTO `roles` (`nama_role`) VALUES
 INSERT INTO `divisi` (`nama_divisi`) VALUES
 ('Administrasi'),
 ('Keuangan'),
-('Akademik'),
-('Minat dan Bakat'),
-('Sosial dan Kemasyarakatan'),
-('Humas'),
-('Teknologi Informasi');
+('PSDAM'),
+('MINBAT'),
+('SOSMA'),
+('HUMAS'),
+('MEDINFO'),
+('KIMAS');
 
 -- Seed: jabatan
 -- KAHIM & WAKAHIM → no division (butuh_divisi = 0)
@@ -154,38 +155,40 @@ INSERT INTO `divisi` (`nama_divisi`) VALUES
 INSERT INTO `jabatan` (`nama_jabatan`, `id_divisi`, `butuh_divisi`) VALUES
 ('KAHIM', NULL, 0),
 ('WAKAHIM', NULL, 0),
-('SEKUM', NULL, 0),
-('WASEKUM', NULL, 0),
-('BENDUM', NULL, 0),
-('WABENDUM', NULL, 0),
+('SEKUM', 1, 1),
+('WASEKUM', 1, 1),
+('BENDUM', 2, 1),
+('WABENDUM', 2, 1),
 ('KADIV ADMINISTRASI', 1, 1),
 ('WAKADIV ADMINISTRASI', 1, 1),
 ('KADIV KEUANGAN', 2, 1),
 ('WAKADIV KEUANGAN', 2, 1),
-('KADIV AKADEMIK', 3, 1),
-('WAKADIV AKADEMIK', 3, 1),
-('KADIV MINAT DAN BAKAT', 4, 1),
-('WAKADIV MINAT DAN BAKAT', 4, 1),
-('KADIV SOSIAL DAN KEMASYARAKATAN', 5, 1),
-('WAKADIV SOSIAL DAN KEMASYARAKATAN', 5, 1),
+('KADIV PSDAM', 3, 1),
+('WAKADIV PSDAM', 3, 1),
+('KADIV MINBAT', 4, 1),
+('WAKADIV MINBAT', 4, 1),
+('KADIV SOSMA', 5, 1),
+('WAKADIV SOSMA', 5, 1),
 ('KADIV HUMAS', 6, 1),
 ('WAKADIV HUMAS', 6, 1),
-('KADIV TEKNOLOGI INFORMASI', 7, 1),
-('WAKADIV TEKNOLOGI INFORMASI', 7, 1),
+('KADIV MEDINFO', 7, 1),
+('WAKADIV MEDINFO', 7, 1),
+('KADIV KIMAS', 8, 1),
+('WAKADIV KIMAS', 8, 1),
 ('STAFF', NULL, 0);
 
 -- Seed: invite codes
 -- Use these codes during registration
 INSERT INTO `invite_code` (`code`, `role_default`, `is_active`) VALUES
-('ADMIN-POINTER-2024', 'admin', 1),
-('EDITOR-POINTER-2024', 'editor', 1),
-('VIEWER-POINTER-2024', 'viewer', 1);
+('ADMIN-POINTER-2026', 'admin', 1),
+('EDITOR-POINTER-2026', 'editor', 1),
+('VIEWER-POINTER-2026', 'viewer', 1);
 
 -- Seed: default admin user
 -- Username: admin1@pointer | Password: admin123
 -- Status: active (can login immediately)
 INSERT INTO `users` (`username`, `password`, `nama`, `npm`, `id_jabatan`, `id_role`, `status`) VALUES
-('admin1@pointer', 'admin123', 'Administrator SIPROKER', '0000000001', 1, 1, 'active');
+('admin1@pointer', 'admin123', 'Administrator SIPROKER', '00001', 1, 1, 'active');
 
 -- Seed: sample program_kerja
 INSERT INTO `program_kerja` (`tema_proker`, `deskripsi`, `tanggal_mulai`, `tanggal_selesai`, `status`) VALUES
