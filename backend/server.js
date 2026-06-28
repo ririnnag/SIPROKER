@@ -61,8 +61,8 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`\n🚀 SIPROKER Backend berjalan di http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`\n🚀 SIPROKER Backend berjalan di port ${PORT}`);
   console.log(`📊 Database: ${process.env.DB_NAME}@${process.env.DB_HOST}`);
   console.log(`🔑 JWT Secret: configured\n`);
 });
